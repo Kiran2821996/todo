@@ -5,6 +5,7 @@ export function App() {
   const [onEdit, setOnEdit] = useState(false);
   const [editableIndex, setEditableIndex] = useState();
   const [editedTodo, setEditedTodo] = useState("");
+  const [read,setRead]=useState(true)
   const addTodo = () => {
     if (!todoItem) {
       alert("Please enter a valid item");
@@ -21,6 +22,7 @@ export function App() {
   const editTodo = (index) => {
     setOnEdit(true);
     setEditableIndex(index);
+    setRead(false)
   };
   const saveTodo = (index) => {
     const newTodos = [...todos];
@@ -28,6 +30,7 @@ export function App() {
     setTodos(newTodos);
     setOnEdit(false);
     setEditableIndex(-1);
+    setRead(true)
   };
   return (
     <div>
@@ -51,12 +54,17 @@ export function App() {
                     setEditedTodo(e.target.value);
                     console.log(editedTodo);
                   }}
+                  readOnly={read}
                 />
                 <button onClick={() => saveTodo(index)}>Save</button>
               </div>
             ) : (
               <div>
-                <h1>{item}</h1>
+                <input
+                  type="text"
+                  defaultValue={item}
+                  readOnly={read}
+                />
                 <button onClick={() => editTodo(index)}>Edit</button>
               </div>
             )}
