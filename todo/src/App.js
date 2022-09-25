@@ -59,14 +59,16 @@ export function App() {
                   readOnly={read}
                 />
                 <button className="child_container-input-save-btn" onClick={() => saveTodo(index)}>Save</button>
-              </div>
+                <button className="delete_btn" onClick={() => deleteTodo(index)}>Delete</button>
+                </div>
             ) : (
               <div className="child_container-edit">
                 <input type="text" className="child_container-input-edit" value={item} readOnly={read}/>
                 <button className="child_container-input-edit-btn" onClick={() => editTodo(index)}>Edit</button>
+                <button className="delete_btn" onClick={() => deleteTodo(index)}>Delete</button>
               </div>
             )}
-            <button className="delete_btn" onClick={() => deleteTodo(index)}>Delete</button>
+           
           </div>
         );
       })}
