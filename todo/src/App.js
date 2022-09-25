@@ -5,7 +5,7 @@ export function App() {
   const [onEdit, setOnEdit] = useState(false);
   const [editableIndex, setEditableIndex] = useState();
   const [editedTodo, setEditedTodo] = useState("");
-  const [read,setRead]=useState(true)
+  const[read,setRead]=useState(true)
   const addTodo = () => {
     if (!todoItem) {
       alert("Please enter a valid item");
@@ -30,7 +30,7 @@ export function App() {
     setTodos(newTodos);
     setOnEdit(false);
     setEditableIndex(-1);
-    setRead(true)
+    setRead(true);
   };
   return (
     <div>
@@ -60,11 +60,7 @@ export function App() {
               </div>
             ) : (
               <div>
-                <input
-                  type="text"
-                  defaultValue={item}
-                  readOnly={read}
-                />
+                <input type="text" value={item} readOnly={read}/>
                 <button onClick={() => editTodo(index)}>Edit</button>
               </div>
             )}
@@ -75,3 +71,4 @@ export function App() {
     </div>
   );
 }
+
