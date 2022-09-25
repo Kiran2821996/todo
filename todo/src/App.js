@@ -33,22 +33,24 @@ export function App() {
     setRead(true);
   };
   return (
-    <div>
-      <input
+    <div className="parent_container">
+      <h1>TO DO LIST</h1>
+      <input className="parent_container-input"
         value={todoItem}
         onChange={(e) => {
           setTodoItem(e.target.value);
         }}
         type="text"
       />
-      <button onClick={addTodo}>Add todo</button>
+      <button className="parent_container-btn" onClick={addTodo}>Add todo</button>
       {todos.map((item, index) => {
         return (
-          <div>
+          <div className="child_container" key={item}>
             {index === editableIndex && onEdit ? (
-              <div>
+              <div className="child_container-save">
                 <input
                   type="text"
+                  className="child_container-input-save"
                   defaultValue={item}
                   onChange={(e) => {
                     setEditedTodo(e.target.value);
@@ -56,15 +58,15 @@ export function App() {
                   }}
                   readOnly={read}
                 />
-                <button onClick={() => saveTodo(index)}>Save</button>
+                <button className="child_container-input-save-btn" onClick={() => saveTodo(index)}>Save</button>
               </div>
             ) : (
-              <div>
-                <input type="text" value={item} readOnly={read}/>
-                <button onClick={() => editTodo(index)}>Edit</button>
+              <div className="child_container-edit">
+                <input type="text" className="child_container-input-edit" value={item} readOnly={read}/>
+                <button className="child_container-input-edit-btn" onClick={() => editTodo(index)}>Edit</button>
               </div>
             )}
-            <button onClick={() => deleteTodo(index)}>Delete</button>
+            <button className="delete_btn" onClick={() => deleteTodo(index)}>Delete</button>
           </div>
         );
       })}
